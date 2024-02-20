@@ -14,7 +14,7 @@ class EtudiantsController extends Controller
     {
         //
         $etudiants = Etudiants::all(); 
-        return $etudiants;
+        return view('etudiants', ["etudiants" => $etudiants]);
     }
 
     /**
@@ -36,17 +36,19 @@ class EtudiantsController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(Etudiants $etudiants)
+    public function show(Etudiants $etudiant)
     {
         //
+        return  view('show', ['etudiant' => $etudiant]);
     }
 
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(Etudiants $etudiants)
+    public function edit(Etudiants $etudiant)
     {
         //
+        return  view('edit', ['etudiant' => $etudiant]);
     }
 
     /**

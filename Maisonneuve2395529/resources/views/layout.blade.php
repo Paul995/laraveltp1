@@ -19,19 +19,10 @@
                 <div class="collapse navbar-collapse" id="navbarsExample03">
                     <ul class="navbar-nav me-auto mb-2 mb-sm-0">
                         <li class="nav-item">
-                            <a class="nav-link active" aria-current="page" href="#">Tasks</a>
+                            <a class="nav-link active" aria-current="page" href="{{route('villes.index')}}">Villes</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="#">User</a>
-                        </li>
-                        <li class="nav-item dropdown">
-                            <a class="nav-link dropdown-toggle" href="#" data-bs-toggle="dropdown"
-                                aria-expanded="false">Tasks</a>
-                            <ul class="dropdown-menu">
-                                <li><a class="dropdown-item" href="#">New Task</a></li>
-                                <li><a class="dropdown-item" href="#">Completed</a></li>
-                                <li><a class="dropdown-item" href="#">Unfinished</a></li>
-                            </ul>
+                            <a class="nav-link" href="{{route('etudiants.index')}}">Etudiants</a>
                         </li>
                     </ul>
                     <ul class="navbar-nav  mb-2 mb-sm-0">
@@ -42,9 +33,6 @@
                                 <li><a class="dropdown-item" href="#">English</a></li>
                                 <li><a class="dropdown-item" href="#">French</a></li>
                             </ul>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="#">Logout</a>
                         </li>
                     </ul>
                 </div>

@@ -16,11 +16,14 @@ use App\Http\Controllers\EtudiantsController;
 
 Route::get('/', function () {
     return view('welcome');
-});
+})->name('welcome');
 
 Route::get('/villes', [VillesController::class, 'index'])->name('villes.index');
 Route::get('/etudiants', [EtudiantsController::class, 'index'])->name('etudiants.index');
 
+Route::get('/etudiant/{etudiant}', [EtudiantsController::class, 'show'])->name('etudiants.show');
 
 
-
+//UPDATE
+Route::get('/edit/etudiant/{etudiant}', [EtudiantsController::class, 'edit'])->name('etudiant.edit'); 
+Route::put('/edit/etudiant/{etudiant}', [EtudiantsController::class, 'update'])->name('etudiant.update'); //meme route/page  mais avec post
