@@ -34,3 +34,7 @@ Route::put('/edit/etudiant/{etudiant}', [EtudiantsController::class, 'update'])-
 //inverse pour que ce soit pas confondu avec id (donc show)
 Route::get('/create/etudiant', [EtudiantsController::class, 'create'])->name('etudiant.create');
 Route::post('/create/etudiant', [EtudiantsController::class, 'store'])->name('etudiant.store'); //meme route/page  mais avec post
+
+
+//DELETE
+Route::delete('/etudiant/{etudiant}', [EtudiantsController::class, 'destroy'])->name('etudiant.delete'); 

@@ -88,8 +88,10 @@ class EtudiantsController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(Etudiants $etudiants)
+    public function destroy(Etudiants $etudiant)
     {
-        //
+        $etudiant->delete();
+
+        return redirect()->route('etudiants.index')->with('sucess', 'etudiant supprime!! sucess');
     }
 }
