@@ -2,6 +2,8 @@
 
 @section('title', 'Liste Etudiants') 
 <h1 class="my-5">&eacute;tudiants</h1>
+
+    <a href="{{route('etudiant.create')}}">Creer un Nouvel &eacute;tudiant</a>
     <div class="row">
 
         @forelse($etudiants as $etudiant)  <!--  forelse comme foreach mais execute le empty si aucune valeur -->

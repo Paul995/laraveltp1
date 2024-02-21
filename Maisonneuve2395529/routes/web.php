@@ -1,7 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\VillesController;
+use App\HEtudiantControllers\VillesController;
 use App\Http\Controllers\EtudiantsController;
 /*
 |--------------------------------------------------------------------------
@@ -21,9 +21,16 @@ Route::get('/', function () {
 Route::get('/villes', [VillesController::class, 'index'])->name('villes.index');
 Route::get('/etudiants', [EtudiantsController::class, 'index'])->name('etudiants.index');
 
+//READ
 Route::get('/etudiant/{etudiant}', [EtudiantsController::class, 'show'])->name('etudiants.show');
 
 
 //UPDATE
 Route::get('/edit/etudiant/{etudiant}', [EtudiantsController::class, 'edit'])->name('etudiant.edit'); 
 Route::put('/edit/etudiant/{etudiant}', [EtudiantsController::class, 'update'])->name('etudiant.update'); //meme route/page  mais avec post
+
+
+//CREATE
+//inverse pour que ce soit pas confondu avec id (donc show)
+Route::get('/create/etudiant', [EtudiantsController::class, 'create'])->name('etudiant.create');
+Route::post('/create/etudiant', [EtudiantsController::class, 'store'])->name('etudiant.store'); //meme route/page  mais avec post

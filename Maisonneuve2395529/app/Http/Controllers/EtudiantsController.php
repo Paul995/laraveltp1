@@ -22,7 +22,7 @@ class EtudiantsController extends Controller
      */
     public function create()
     {
-        //
+        return view('create');
     }
 
     /**
@@ -30,7 +30,33 @@ class EtudiantsController extends Controller
      */
     public function store(Request $request)
     {
-        //
+           //validation
+        //les messages de validation sont dans dossier lang/validation.php
+        $request->validate([
+            //      le "name" du input     max caracter length
+                        'nom' => 'required|string|max:255',
+                        'adresse' => 'required|string|max:255',
+                        'telephone' => 'required|string|max:25',
+                        'email' => 'required|string|max:255',
+                        'date_de_naissance' => 'required|date', 
+                        'ville_id' => 'required|integer'
+                   
+                    ]);
+            
+            
+                    //    mthd create([]) de eloquent fait:
+                    //req: insert into tasks ([]) values ([])
+                    //res: select * from tasks where id = last inserted
+                    $etudiant = Etudiants::create([
+                        'nom' => $request->nom,
+                        'adresse' => $request->adresse,
+                        'telephone' => $request->telephone,
+                        'email' => $request->email,
+                        'date_de_naissance' => $request->date_de_naissance,
+                        'ville_id' => $request->ville_id
+                    ]);
+            //                                                                 
+                    return redirect()->route('etudiant.show', $etudiant->id)->with('success', 'Etudiant created successfully!');
     }
 
     /**
