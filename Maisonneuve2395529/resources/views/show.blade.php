@@ -19,7 +19,7 @@
                         <li><strong>Telephone : </strong>{{$etudiant->telephone}}</li>
                         <li><strong>Email : </strong>{{$etudiant->email}}</li>
                         <li><strong>Date de Naissance : </strong>{{$etudiant->date_de_naissance}}</li>
-                        <li><strong>Ville : </strong>???</li>
+                        <li><strong>Ville : </strong>{{$etudiant->ville->nom}}</li>
                     </ul>
                 </div>
                 <div class="card-footer d-flex justify-content-between">
@@ -63,3 +63,4 @@
         </div>
     </div>
 
+@endsection

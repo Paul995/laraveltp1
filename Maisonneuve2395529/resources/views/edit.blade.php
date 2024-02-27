@@ -2,7 +2,7 @@
 @section('title','Edit Etudiant')
 @section('content')
 
-<h1>Edit Etudiant</h1>
+<br><br>
 <div class="row justify-content-center">
     <div class="col-md-8">
         <div class="card">
@@ -55,7 +55,7 @@
                         @endif
                     </div>
 
-
+                    {{$etudiant->ville_id}}
                     <div class="mb-3">
                        <label for="date_de_naissance" class="form-label">date_de_naissance</label>        <!-- pour conserver les champs si erreurs -->
                         <input type="date" name="date_de_naissance" id="date_de_naissance" class="form-control" value="{{old('date_de_naissance', $etudiant->date_de_naissance)}}">
@@ -67,8 +67,15 @@
                     </div>
 
                     <div class="mb-3">
-                       <label for="ville_id" class="form-label">ville</label>        <!-- pour conserver les champs si erreurs -->
-                        <input type="number" min="1" max="15" name="ville_id" id="ville_id" class="form-control" value="{{old('ville_id', $etudiant->ville_id)}}">
+                    <label for="ville_id" class="form-label">Ville</label>
+                    <select name="ville_id" id="ville_id" class="form-control">
+                        <option value="">Select a Ville</option>
+                        @foreach($villes as $ville)
+                        <option value="{{ $ville->id }}" {{ $etudiant->ville_id == $ville->id ? 'selected' : '' }}>
+                                {{ $ville->nom }}
+                        </option>
+                        @endforeach
+                    </select>
                         @if($errors->has('ville_id'))
                         <div class="text-danger mt2-2">
                             {{$errors->first('ville_id')}}

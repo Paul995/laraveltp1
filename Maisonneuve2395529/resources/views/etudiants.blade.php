@@ -1,9 +1,10 @@
 @extends('layout')
 
 @section('title', 'Liste Etudiants') 
-<h1 class="my-5">&eacute;tudiants</h1>
+@section('content')
+<h1 class="my-5">&Eacute;tudiants</h1>
 
-    <a href="{{route('etudiant.create')}}">Creer un Nouvel &eacute;tudiant</a>
+    <a href="{{route('etudiant.create')}}"><button id="create">+ Creer un Nouvel &eacute;tudiant</button></a><br><br><br>
     <div class="row">
 
         @forelse($etudiants as $etudiant)  <!--  forelse comme foreach mais execute le empty si aucune valeur -->
@@ -20,7 +21,7 @@
                         <li><strong>Telephone : </strong>{{$etudiant->telephone}}</li>
                         <li><strong>Email : </strong>{{$etudiant->email}}</li>
                         <li><strong>Date de Naissance : </strong>{{$etudiant->date_de_naissance}}</li>
-                        <li><strong>Ville : </strong>???</li>
+                        <li><strong>Ville : </strong>{{$etudiant->ville->nom}}</li>
                     </ul>
                     
                 </div>
@@ -38,4 +39,5 @@
 
     </div>
 
+    @endsection
 

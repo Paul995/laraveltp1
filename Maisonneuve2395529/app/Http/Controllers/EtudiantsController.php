@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Etudiants;
 use Illuminate\Http\Request;
+use App\Models\Villes;
 
 class EtudiantsController extends Controller
 {
@@ -22,7 +23,9 @@ class EtudiantsController extends Controller
      */
     public function create()
     {
-        return view('create');
+        $etudiants = Etudiants::all(); 
+        $villes = Villes::all();
+        return view('create', [ 'villes' => $villes, "etudiant" => $etudiants]);
     }
 
     /**
@@ -56,7 +59,7 @@ class EtudiantsController extends Controller
                         'ville_id' => $request->ville_id
                     ]);
             //                                                                 
-                    return redirect()->route('etudiant.show', $etudiant->id)->with('success', 'Etudiant created successfully!');
+                    return redirect()->route('etudiants.show', $etudiant->id)->with('success', 'Etudiant created successfully!');
     }
 
     /**
@@ -73,16 +76,41 @@ class EtudiantsController extends Controller
      */
     public function edit(Etudiants $etudiant)
     {
-        //
-        return  view('edit', ['etudiant' => $etudiant]);
+        $villes = Villes::all();
+
+        return  view('edit', [ 'villes' => $villes, 'etudiant' => $etudiant]);
     }
 
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, Etudiants $etudiants)
+    public function update(Request $request, Etudiants $etudiant)
     {
-        //
+         //
+         $request->validate([
+            //      le "name" du input     max caracter length
+                        'nom' => 'required|string|max:255',
+                        'adresse' => 'required|string|max:255',
+                        'telephone' => 'required|string|max:25',
+                        'email' => 'required|string|max:255',
+                        'date_de_naissance' => 'required|date', 
+                        'ville_id' => 'required|integer'
+                   
+                    ]);
+    
+            $etudiant->update([
+                'nom' => $request->nom,
+                'adresse' => $request->adresse,
+                'telephone' => $request->telephone,
+                'email' => $request->email,
+                'date_de_naissance' => $request->date_de_naissance,
+                'ville_id' => $request->ville_id
+            ]);
+
+
+    
+            return redirect()->route('etudiants.show', $etudiant->id)->with('success', 'Etudiant updated sucessfully');
+            
     }
 
     /**
